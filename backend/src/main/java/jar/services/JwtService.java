@@ -17,7 +17,8 @@ public class JwtService {
     private static final String JWT_SECRET_KEY =
             "vikramramvikramramvikramram123456789";
 
-    private static final long JWT_TOKEN_VALIDITY =  60 * 1000;
+    // Token valid for 1 minute
+    private static final long JWT_TOKEN_VALIDITY = 60 * 1000;
 
     private Key generateSecretKey() {
         return Keys.hmacShaKeyFor(JWT_SECRET_KEY.getBytes());
@@ -34,10 +35,10 @@ public class JwtService {
         claims.put("email", user.getEmail());
 
         return Jwts.builder()
-                .claims(claims)
-                .subject(user.getEmail())
-                .issuedAt(now)
-                .expiration(expiryDate)
+                .setClaims(claims)
+                .setSubject(user.getEmail())
+                .setIssuedAt(now)
+                .setExpiration(expiryDate)
                 .signWith(generateSecretKey())
                 .compact();
     }
