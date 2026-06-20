@@ -3,7 +3,7 @@ import React, { use, useState } from "react";
 const Math = () => {
   let [r, setR] = useState(0);
   let [v, setV] = useState(1);
-  let api = "http://127.0.0.1:5050/fact?n";
+  let api = "https://srg-sat7.onrender.com/fact?n";
   async function apiCall() {
     let req = await fetch(`${api}=${v}`);
     let res = await req.text();
